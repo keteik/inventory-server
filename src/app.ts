@@ -28,7 +28,7 @@ async function startServer(): Promise<void> {
     try {
         await mongoose.connect(MONGO_URI);
         console.log("Database connected successfully!");
-        
+
         app.listen(HTTP_PORT, () => {
             console.log(`HTTP server is running at port ${HTTP_PORT}!`);
         });
@@ -36,24 +36,3 @@ async function startServer(): Promise<void> {
         console.error(err);
     }    
 }
-
-
-// mongoose
-//     .connect(process.env.mongoDB, { useNewUrlParser: true})
-//     .then(() => {
-//         console.log("Database connected!");
-//     })
-//     .then(() => {
-//         app.listen(process.env.HTTP_PORT, () => {
-//             console.log(`HTTP server is running at port ${process.env.HTTP_PORT}!`);
-//         })
-//     });
-
-// app.listen(process.env.HTTP_PORT, () => {
-//     console.log(`HTTP server is running at port ${process.env.HTTP_PORT}!`);
-// });
-
-app.post('/os', (req: Request, res: Response) => {
-    console.log(req.body);
-    res.status(200).send("hell world");
-})
