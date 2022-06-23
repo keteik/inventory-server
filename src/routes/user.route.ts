@@ -1,12 +1,17 @@
 import { Request, Response, Router } from "express";
-import { saveUser } from "../controllers/user.controller";
+import  UserController  from "../controllers/user.controller";
 
 //const router = Router();
 
 export const userRouter = Router()
-    .get('/')
+    .get('/', (req: Request, res: Response) => {
+        return UserController.getUsers(req, res);
+    })
+    .get('/:id', (req: Request, res: Response) => {
+        return UserController.getUser(req, res);
+    })
     .post('/', (req: Request, res: Response) => {
-        return saveUser(req, res);
+        return UserController.saveUser(req, res);
     })
     .put('/')
     .delete('/')
