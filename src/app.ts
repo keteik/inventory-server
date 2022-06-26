@@ -1,8 +1,10 @@
 import mongoose from "mongoose"; 
 import express from 'express';
 import 'dotenv/config';
-
+import { verifyToken } from './middleware/auth';
 import { userRouter } from "./routes/user.route";
+import { authRouter } from "./routes/auth.route";
+import { osRouter } from "./routes/os.route";
 
 const app = express();
 app.use(express.urlencoded({ extended: false}));
@@ -12,8 +14,10 @@ app.use(express.json());
 // Start server
 try {
     await startServer();
-
+    app.use('/api/v1/auth', authRouter);
+    app.use(verifyToken);
     app.use('/api/v1/user', userRouter);
+    app.use('/api/v1/os', osRouter);
 } catch (err) {
     console.log(err);
 }

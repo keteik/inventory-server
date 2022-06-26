@@ -1,27 +1,14 @@
-import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
-import { TokenType, IUser, User } from '../models/user.model';
+import { IUser, User } from '../models/user.model';
 
 class UserService {
-    generateToken(payload: string, tokenType: TokenType): string {
-        /* Check if required env variables are provided */
-        if(!process.env.SECRET)
-            throw new Error("Secret key is not provided!");
-        if(!process.env.TOKEN_EXPIRATION)
-            throw new Error("Token expiration time key is not provided!");
-        if(!process.env.REFRESH_TOKEN_EXPIRATION)
-            throw new Error("Refresh token expiration time is not provided!");
 
-        if(tokenType === TokenType.token) /* Check token type */
-            return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.TOKEN_EXPIRATION }); /* Generate refresh token */
-            
-        return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRATION }); /* Generate token */
-    }
-
+    /* Save given user to DB and return created one */
     async createUser(user: IUser): Promise<IUser> {
         return new User(user).save();
     }
 
+    /* Return user from DB based on the given id */
     async getUserById(id: mongoose.Types.ObjectId): Promise<IUser | null> {
         return User.findById(id, {
             password: 0,
@@ -29,18 +16,48 @@ class UserService {
         });
     }
 
+    /* Return user from DB based on the given name */
     async getUserByName(name: string): Promise<IUser | null> {
         return User.findOne({ name: name }, {
-            password: 0,
             __v: 0
         });
     }
 
+    /* Return all users from DB */
     async getUsers(): Promise<IUser [] | null> {
         return User.find({}, {
             password: 0,
             __v: 0
         });  
+    }
+    /* Update and return user name from DB*/
+    async updateUserName(id: mongoose.Types.ObjectId, newName: string): Promise<IUser | null> {
+        return User.findByIdAndUpdate(id, { name: newName }, { 
+            projection: {
+                password: 0,
+                __v: 0
+            }, new: true 
+        });
+    }
+
+    /* Update and return refreshToken from DB*/
+    async updateRefreshToken(id: mongoose.Schema.Types.ObjectId, newRefreshToken: string): Promise<IUser | null> {
+        return User.findByIdAndUpdate(id, { refreshToken: newRefreshToken }, { 
+            projection: {
+                password: 0,
+                __v: 0
+            }, new: true 
+        });
+    }
+
+    /* Delete and return user from DB */ 
+    async deleteUser(id: mongoose.Types.ObjectId): Promise<IUser | null> {
+        return User.findByIdAndDelete(id, {
+           projection: {
+                password: 0,
+                __v: 0
+           }
+        })
     }
 }
 
