@@ -52,9 +52,66 @@ class OsController {
         const deviceBody: IDevice = req.body;
 
         try {
-            await DeviceService.updateDevice(hardwareUuid, deviceBody);
-
+            const updated = await DeviceService.updateDevice(hardwareUuid, deviceBody);
+            console.log(updated);
             return res.status(200).send({ status: "success", message: "Device updated successfully!"});
+        } catch(err: any) {
+            return res.status(404).send({ status: "failed", message: err.message });
+        }
+    }
+
+    async deleteDevice(req: Request, res: Response): Promise<Response> {
+        const hardwareUuid: string = req.params.id;
+
+        try {
+            const deleted = await DeviceService.deleteDevice(hardwareUuid);
+            console.log(deleted);
+            return res.status(200).send({ status: "success", message: "Device deleted successfully!"});
+        } catch(err: any) {
+            return res.status(404).send({ status: "failed", message: err.message });
+        }
+    }
+
+    async getDeviceOs(req: Request, res: Response): Promise<Response> {
+        const hardwareUuid: string = req.params.id;
+
+        try {
+            const findDeviceOs = await DeviceService.getDeviceOs(hardwareUuid);
+
+            if(!findDeviceOs)
+                return res.status(404).send({ status: "failed", message: "DeviceOs not found!"});
+            
+            return res.status(200).send({ status: "success", deviceOs: findDeviceOs});
+        } catch(err: any) {
+            return res.status(404).send({ status: "failed", message: err.message });
+        }
+    }
+
+    async getDeviceCpu(req: Request, res: Response): Promise<Response> {
+        const hardwareUuid: string = req.params.id;
+
+        try {
+            const findDeviceCpu = await DeviceService.getDeviceCpu(hardwareUuid);
+
+            if(!findDeviceCpu)
+                return res.status(404).send({ status: "failed", message: "DeviceCpu not found!"});
+            
+            return res.status(200).send({ status: "success", deviceCpu: findDeviceCpu});
+        } catch(err: any) {
+            return res.status(404).send({ status: "failed", message: err.message });
+        }
+    }
+
+    async getDeviceNetwork(req: Request, res: Response): Promise<Response> {
+        const hardwareUuid: string = req.params.id;
+
+        try {
+            const findDeviceNetwork = await DeviceService.getDeviceNetwork(hardwareUuid);
+
+            if(!findDeviceNetwork)
+                return res.status(404).send({ status: "failed", message: "DeviceCpu not found!"});
+            
+            return res.status(200).send({ status: "success", deviceNetwork: findDeviceNetwork});
         } catch(err: any) {
             return res.status(404).send({ status: "failed", message: err.message });
         }
