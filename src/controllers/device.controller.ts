@@ -30,7 +30,7 @@ class OsController {
             
             return res.status(200).send({ status: "success", device: findDevice});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -43,7 +43,7 @@ class OsController {
             
             return res.status(200).send({ status: "success", devices: findDevice});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -52,11 +52,14 @@ class OsController {
         const deviceBody: IDevice = req.body;
 
         try {
-            const updated = await DeviceService.updateDevice(hardwareUuid, deviceBody);
-            console.log(updated);
+            const updatedDevice: IDevice | null = await DeviceService.updateDevice(hardwareUuid, deviceBody);
+
+            if(!updatedDevice)
+                return res.status(404).send({ status: "failed", message: "Device not found!"});
+
             return res.status(200).send({ status: "success", message: "Device updated successfully!"});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -64,11 +67,14 @@ class OsController {
         const hardwareUuid: string = req.params.id;
 
         try {
-            const deleted = await DeviceService.deleteDevice(hardwareUuid);
-            console.log(deleted);
+            const deletedDevice: IDevice | null = await DeviceService.deleteDevice(hardwareUuid);
+
+            if(!deletedDevice)
+                return res.status(404).send({ status: "failed", message: "Device not found!"});
+
             return res.status(200).send({ status: "success", message: "Device deleted successfully!"});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -83,7 +89,7 @@ class OsController {
             
             return res.status(200).send({ status: "success", deviceOs: findDeviceOs});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -98,7 +104,7 @@ class OsController {
             
             return res.status(200).send({ status: "success", deviceCpu: findDeviceCpu});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 
@@ -113,7 +119,7 @@ class OsController {
             
             return res.status(200).send({ status: "success", deviceNetwork: findDeviceNetwork});
         } catch(err: any) {
-            return res.status(404).send({ status: "failed", message: err.message });
+            return res.status(500).send({ status: "failed", message: err.message });
         }
     }
 }

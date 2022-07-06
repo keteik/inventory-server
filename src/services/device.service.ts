@@ -14,11 +14,12 @@ class DeviceService {
         return new Device(device).save();
     }
 
-    async updateDevice(hardwareUuid: string, device: IDevice): Promise<QueryOptions<IDevice>> {
-        return Device.updateOne({ hardwareUuid: hardwareUuid }, device);
+    async updateDevice(hardwareUuid: string, device: IDevice): Promise<IDevice | null> {
+        //return Device.updateOne({ hardwareUuid: hardwareUuid }, device);
+        return Device.findOneAndUpdate({ hardwareUuid: hardwareUuid }, device);
     }
 
-    async deleteDevice(hardwareUuid: string): Promise<QueryOptions<IDevice> | null> {
+    async deleteDevice(hardwareUuid: string): Promise<IDevice | null> {
         return Device.findOneAndDelete({ hardwareUuid: hardwareUuid });
     }
 
