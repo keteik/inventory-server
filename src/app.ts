@@ -10,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
-async function server() {
+async function run() {
     // Start server
     try {
         await startServer();
@@ -49,4 +49,4 @@ async function startServer(): Promise<void> {
     }    
 }
 
-server();
+run();
