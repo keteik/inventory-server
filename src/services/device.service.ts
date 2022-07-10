@@ -6,7 +6,7 @@ class DeviceService {
         return Device.findOne({ hardwareUuid: hardwareUuid } );
     }
 
-    async getDevices(): Promise<IDevice [] | null> {
+    async getDevices(): Promise<IDevice []> {
         return Device.find();
     }
 

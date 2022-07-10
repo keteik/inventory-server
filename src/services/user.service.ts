@@ -24,7 +24,7 @@ class UserService {
     }
 
     /* Return all users from DB */
-    async getUsers(): Promise<IUser [] | null> {
+    async getUsers(): Promise<IUser []> {
         return User.find({}, {
             password: 0,
             __v: 0

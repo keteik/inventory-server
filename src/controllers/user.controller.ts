@@ -53,10 +53,7 @@ class UserController {
 
     async getUsers(_: Request, res: Response): Promise<Response> {
         try {
-            const findUsers: IUser [] | null = await UserService.getUsers();
-
-            if(!findUsers || findUsers.length === 0)
-                return res.status(404).send({ status: "failed", message: "Users not found!" });
+            const findUsers: IUser [] = await UserService.getUsers();
             
             return res.status(200).send({ status: "sucess", users: findUsers });
         } catch(err: any) {

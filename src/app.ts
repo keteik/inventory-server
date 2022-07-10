@@ -10,16 +10,17 @@ const app = express();
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
-
-// Start server
-try {
-    await startServer();
-    app.use('/api/v1/auth', authRouter);
-    app.use('/api/v1/device', deviceRouter);
-    app.use(verifyToken);
-    app.use('/api/v1/user', userRouter);
-} catch (err) {
-    console.log(err);
+async function server() {
+    // Start server
+    try {
+        await startServer();
+        app.use('/api/v1/auth', authRouter);
+        app.use('/api/v1/device', deviceRouter);
+        app.use(verifyToken);
+        app.use('/api/v1/user', userRouter);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function startServer(): Promise<void> {
@@ -35,7 +36,8 @@ async function startServer(): Promise<void> {
 
     try {
         /* Connect to db*/
-        await mongoose.connect(MONGO_URI);
+        await mongoose.connect("mongodb://" + MONGO_URI + "/inventory");
+        //await mongoose.connect(MONGO_URI);
         console.log("Connected to DB!");
 
     /* Start listening */
@@ -46,3 +48,5 @@ async function startServer(): Promise<void> {
         console.error(err);
     }    
 }
+
+server();

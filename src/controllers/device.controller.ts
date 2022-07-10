@@ -36,10 +36,7 @@ class OsController {
 
     async getDevices(req: Request, res: Response): Promise<Response> {
         try {
-            const findDevice: IDevice [] | null = await DeviceService.getDevices();
-
-            if(!findDevice || findDevice.length === 0)
-                return res.status(404).send({ status: "failed", message: "Devices not found!"});
+            const findDevice: IDevice [] = await DeviceService.getDevices();
             
             return res.status(200).send({ status: "success", devices: findDevice});
         } catch(err: any) {
@@ -53,6 +50,7 @@ class OsController {
 
         try {
             const updatedDevice: IDevice | null = await DeviceService.updateDevice(hardwareUuid, deviceBody);
+            console.log(updatedDevice);
 
             if(!updatedDevice)
                 return res.status(404).send({ status: "failed", message: "Device not found!"});
