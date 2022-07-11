@@ -32,7 +32,7 @@ export function generateToken(payload: string, tokenType: TokenType): string {
         throw new Error("Refresh token expiration time is not provided!");
 
     if(tokenType === TokenType.token) /* Check token type */
-        return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.TOKEN_EXPIRATION }); /* Generate token */
+        return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.TOKEN_EXPIRATION });
         
-    return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRATION }); /* Generate refresh token */
+    return jwt.sign({ name: payload },  process.env.SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRATION });
 }

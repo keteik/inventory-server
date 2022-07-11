@@ -15,7 +15,6 @@ class DeviceService {
     }
 
     async updateDevice(hardwareUuid: string, device: IDevice): Promise<IDevice | null> {
-        //return Device.updateOne({ hardwareUuid: hardwareUuid }, device);
         return Device.findOneAndUpdate({ hardwareUuid: hardwareUuid }, device);
     }
 
