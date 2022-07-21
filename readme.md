@@ -10,22 +10,22 @@
 ### Installation req:
 
   *Install these resources for nice and easy env for development && production.*  
-  | **MongoDB** & **Node.JS** [ TypeORM & ExpressJS, cpx] |
+  | **MongoDB** & **Node.JS** |
 
 ### Steps to install this project:
 
-01. Clone repo to local
+00. Clone repo to local
 ```
 git clone https://github.com/keteik/inventory-server.git
 ```
-02. Run installation of package.json  
+01. Run installation of package.json  
 ```
 npm install
 ```
 
 ### Enviromental variables:
 
-01. Create .env file with this variables and specifay each of them
+00. Create .env file with this variables and specifay each of them
 ```
 HTTP_PORT
 MONGO_URI
@@ -36,7 +36,7 @@ TOKEN_EXPIRATION
 
 ### Development:
 
-0. Run in development
+00. Run in development
 ``` 
 npm run dev 
 ```  
