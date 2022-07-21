@@ -1,7 +1,7 @@
 #  Backend APP  
 
 [Install](#Installation-req)    
-[Enviromental variables(.env)](#Enviromental-variables(.env))     
+[Enviromental variables](#Enviromental-variables(.env))     
 [Development](#Development)     
 [Production](#Production)   
 [Docker](#Docker)   
