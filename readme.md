@@ -1,4 +1,4 @@
-#  Backend APP  
+#  Inventory server backend  
 
 [Install](#Installation-req)    
 [Enviromental variables](#Enviromental-variables)     
