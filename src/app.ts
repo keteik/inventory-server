@@ -10,19 +10,6 @@ const app = express();
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
-async function run() {
-    // Start server
-    try {
-        await startServer();
-        app.use('/api/v1/auth', authRouter);
-        app.use('/api/v1/device', deviceRouter);
-        app.use(verifyToken);
-        app.use('/api/v1/user', userRouter);
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 async function startServer(): Promise<void> {
     /* Load env variables */
     const MONGO_URI: string | undefined = process.env.MONGO_URI;
@@ -49,4 +36,13 @@ async function startServer(): Promise<void> {
     }    
 }
 
-run();
+try {
+    await startServer();
+
+    app.use('/api/v1/auth', authRouter);
+    app.use('/api/v1/device', deviceRouter);
+    app.use(verifyToken);
+    app.use('/api/v1/user', userRouter);
+} catch (err) { 
+    console.log(err) 
+};
