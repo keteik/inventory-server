@@ -65,7 +65,8 @@ docker compose up
 
 ### Project scripts:  
 
-| script      |                                                           |
+npm run
+
 | ------------|-----------------------------------------------------------|
 | start       | node ./build/app.js                                       |
 | dev         | nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts|
