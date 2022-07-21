@@ -1,11 +1,11 @@
 #  Backend APP  
 
-[Install](#Installation-req)  
-[Development](#Development)  
-[Deploy general](#Steps-to-deploy-this-project)  
-[Docker](#Docker-deploy)  
-[Important](#Important)  
-[Error log](#Error-Log)  
+[Install](#Installation-req)
+[Enviromental variables](#Enviromental-Variables(.env)) 
+[Development](#Development)
+[Production](#Production)
+[Docker](#Docker)  
+[Project scripts](#Project-scripts(.npm run))  
 
 ### Installation req:
   *Install these resources for nice and easy env for development && production.*  
@@ -66,7 +66,7 @@ docker compose up
  
 
 
-###### Project scripts(npm run):  
+### Project scripts(npm run):  
 | npm           | -                                                         |
 | ------------- |:---------------------------------------------------------:|
 | start       | node ./build/app.js                                       |
