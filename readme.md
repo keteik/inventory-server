@@ -5,7 +5,7 @@
 [Development](#Development)     
 [Production](#Production)   
 [Docker](#Docker)   
-[Project-scripts](#Project-scripts(npm-run)) 
+[Project-scripts](#Project-scripts) 
 
 ### Installation req:
 
@@ -63,10 +63,10 @@ docker build . -t image-name
 docker compose up
 ```
 
-### Project scripts(npm run):  
+### Project scripts:  
 
-| npm           | -                                                         |
-| ------------- |:---------------------------------------------------------:|
+| npm run     |                                                           |
+| ------------|-----------------------------------------------------------|
 | start       | node ./build/app.js                                       |
-| dev         | nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts            |
-| build       | tsc-esm                                                    |
+| dev         | nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts|
+| build       | tsc-esm                                                   |
