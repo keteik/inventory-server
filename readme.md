@@ -5,7 +5,7 @@
 [Development](#Development)     
 [Production](#Production)   
 [Docker](#Docker)   
-[Project scripts](#Project-scripts(npm run)) 
+[Project scripts](#Project-scripts(npm-run)) 
 
 ### Installation req:
   *Install these resources for nice and easy env for development && production.*  
