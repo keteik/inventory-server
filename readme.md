@@ -23,7 +23,7 @@ git clone https://github.com/keteik/inventory-server.git
 npm install
 ```
 
-### Enviromental variables(.env)
+### Enviromental variables(.env):
 
 01. Create .env file with this variables and specifay each of them
 ```
