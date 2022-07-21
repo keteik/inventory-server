@@ -1,6 +1,6 @@
 #  Backend APP  
 
-[Install](#Installation-req)  
+[Install](#Installation-req)    
 [Enviromental variables](#Enviromental-Variables(.env))     
 [Development](#Development)     
 [Production](#Production)   
@@ -11,7 +11,6 @@
   *Install these resources for nice and easy env for development && production.*  
   | **MongoDB** & **Node.JS** [ TypeORM & ExpressJS, cpx] |
 ### Steps to install this project:
-casc
 
 01. Clone repo to local
 ```
