@@ -1,7 +1,7 @@
 #  Backend APP  
 
 [Install](#Installation-req)    
-[Enviromental variables](#Enviromental-variables(.env))     
+[Enviromental variables](#Enviromental-variables)     
 [Development](#Development)     
 [Production](#Production)   
 [Docker](#Docker)   
@@ -23,7 +23,7 @@ git clone https://github.com/keteik/inventory-server.git
 npm install
 ```
 
-### Enviromental variables(.env):
+### Enviromental variables:
 
 01. Create .env file with this variables and specifay each of them
 ```
