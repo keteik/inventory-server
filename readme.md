@@ -1,15 +1,17 @@
 #  Backend APP  
 
 [Install](#Installation-req)    
-[Enviromental variables](#Enviromental-Variables(.env))     
+[Enviromental-variables](#Enviromental-Variables(.env))     
 [Development](#Development)     
 [Production](#Production)   
 [Docker](#Docker)   
-[Project scripts](#Project-scripts(npm-run)) 
+[Project-scripts](#Project-scripts(npm-run)) 
 
 ### Installation req:
+
   *Install these resources for nice and easy env for development && production.*  
   | **MongoDB** & **Node.JS** [ TypeORM & ExpressJS, cpx] |
+
 ### Steps to install this project:
 
 01. Clone repo to local
@@ -32,13 +34,12 @@ REFRESH_TOKEN_EXPIRATION
 TOKEN_EXPIRATION
 ```
 
-### Development  
+### Development:
 
 0. Run in development
 ``` 
 npm run dev 
 ```  
-
 
 ### Production:
 
@@ -62,10 +63,8 @@ docker build . -t image-name
 docker compose up
 ```
 
- 
-
-
 ### Project scripts(npm run):  
+
 | npm           | -                                                         |
 | ------------- |:---------------------------------------------------------:|
 | start       | node ./build/app.js                                       |
